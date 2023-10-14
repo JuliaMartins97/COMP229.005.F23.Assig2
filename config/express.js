@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var logger = require('morgan');
 
-var indexRouter = require('../app/routes/index');
 var apiRoutes = require('../app/routes/api');
 
 var app = express();
@@ -12,7 +11,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/', indexRouter);
 app.use('/api', apiRoutes);
 
 

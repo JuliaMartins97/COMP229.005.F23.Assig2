@@ -1,4 +1,4 @@
-const Product = require('../models/products');
+const { Product }= require('../models/products');
 
 // Create a new product
 exports.createProduct = async (req, res, next) => {
@@ -16,22 +16,21 @@ exports.createProduct = async (req, res, next) => {
     await product.save();
 
     res.status(201).json(product);
-    res.json({
-      success: true,
-      message: "User created sucessfully."
-    });
   } catch (error) {
+    console.log(`ERRORRRRRRRRRR::: ${error}`);
     res.status(500).json({ error: 'Failed to create the product.' });
   }
 };
 
-// Get all products
+//Get all products
 exports.getAllProducts = async (req, res, next) => {
   try {
-    const products = await Product.find({}, '-password');
+    console.log('teste');
+    const products = await Product.find();
 
     res.status(200).json(products);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: 'Failed to retrieve products.' });
   }
 };
