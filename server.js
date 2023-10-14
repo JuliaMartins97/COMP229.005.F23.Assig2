@@ -9,9 +9,6 @@ var app = require('./config/express');
 var debug = require('debug')('comp229006:server');
 var http = require('http');
 
-//move to a new route? 
-// const apiRoutes = require('./app/routes/api');
-// app.use('/api', apiRoutes);
 
 /**
  * Get port from environment and store in Express.
