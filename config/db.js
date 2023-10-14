@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 module.exports = function(){
 
-    mongoose.connect(config.ATLASDB);
+    mongoose.connect(config.PRODUCTSDB);
 
     let mongodb = mongoose.connection;
 

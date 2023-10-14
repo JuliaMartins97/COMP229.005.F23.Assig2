@@ -1,4 +1,4 @@
-const Product = require('../models/products');
+const  { Product } = require('../models/products');
 
 // Create a new product
 exports.createProduct = async (req, res, next) => {
@@ -16,11 +16,9 @@ exports.createProduct = async (req, res, next) => {
     await product.save();
 
     res.status(201).json(product);
-    res.json({
-      success: true,
-      message: "User created sucessfully."
-    });
+
   } catch (error) {
+    console.log(`ERRORRRRRRRRRR::: ${error}`);
     res.status(500).json({ error: 'Failed to create the product.' });
   }
 };
@@ -28,10 +26,11 @@ exports.createProduct = async (req, res, next) => {
 // Get all products
 exports.getAllProducts = async (req, res, next) => {
   try {
-    const products = await Product.find({}, '-password');
+    const products = await Product.find();
 
     res.status(200).json(products);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: 'Failed to retrieve products.' });
   }
 };
@@ -40,7 +39,7 @@ exports.getAllProducts = async (req, res, next) => {
 exports.getProductById = async (req, res,next) => {
   try {
     const productId = req.params.id;
-    const product = await Product.findById({productId}, '-password');
+    const product = await Product.findById(productId);
 
     if (!product) {
       return res.status(404).json({ error: 'Product not found.' });
