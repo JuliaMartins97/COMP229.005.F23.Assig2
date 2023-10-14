@@ -19,6 +19,7 @@ const CategorySchema = new Schema({
 
 
 
+
 // // Create models for 'Product' and 'Category' collections
 const Product = mongoose.model('Product', ProductSchema);
 const Category = mongoose.model('Category', CategorySchema);

@@ -25,7 +25,6 @@ exports.createProduct = async (req, res, next) => {
 //Get all products
 exports.getAllProducts = async (req, res, next) => {
   try {
-    console.log('teste');
     const products = await Product.find();
 
     res.status(200).json(products);
@@ -39,7 +38,7 @@ exports.getAllProducts = async (req, res, next) => {
 exports.getProductById = async (req, res,next) => {
   try {
     const productId = req.params.id;
-    const product = await Product.findById({productId}, '-password');
+    const product = await Product.findById(productId);
 
     if (!product) {
       return res.status(404).json({ error: 'Product not found.' });
